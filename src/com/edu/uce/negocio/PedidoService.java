@@ -7,7 +7,19 @@ public class PedidoService {
         System.out.println("Total: "+ pedido.getTotal());
         System.out.println("Guardando en la base de datos");
 
-        NotificadorMail n1 = new NotificadorMail();
-        n1.enviar(pedido.getCorreo(), "Su ha creado un pedido para ser atendido");
+        // NotificadorMail n1 = new NotificadorMail();
+        //n1.enviar(pedido.getCorreo(), "Su ha creado un pedido para ser atendido");
+
+        if (pedido.getTotal() > 100) {
+            // Enviar MAIL
+            NotificadorMail n1 = new NotificadorMail();
+            n1.enviar(pedido.getCorreo(), 
+                      "Su pedido supera los $100 y será atendido prioritariamente");
+        } else {
+            // Enviar SMS
+            NotificacionSMS n2 = new NotificacionSMS();
+            n2.enviar(pedido.getTelefono(), 
+                      "Su pedido ha sido registrado correctamente");
+        }
     }
 }
