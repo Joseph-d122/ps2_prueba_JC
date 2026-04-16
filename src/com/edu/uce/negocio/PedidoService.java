@@ -12,11 +12,15 @@ public class PedidoService {
 
         
 
-        if (pedido.getTotal() > 100) {
+        if (pedido.getTotal() > 120) {
             NotificadorMail n1 = new NotificadorMail();
             n1.enviar(pedido.getCorreo(), 
-                      "Su pedido supera los $100 y será atendido prioritariamente");
-        } else {
+                      "Su pedido supera los $120 y será atendido prioritariamente");
+        }else if (pedido.getTotal() < 50) {
+            NotificacionWhatsapp n3 = new NotificacionWhatsapp();
+            n3.enviar(pedido.getTelefono(), 
+                     "Su pedido supera los $50 y será atendido en breve");
+        } else if (pedido.getTotal() >= 50 && pedido.getTotal() <= 120) {
             NotificacionSMS n2 = new NotificacionSMS();
             n2.enviar(pedido.getTelefono(), 
                      "Su pedido ha sido registrado correctamente");

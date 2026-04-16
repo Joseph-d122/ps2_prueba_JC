@@ -10,9 +10,11 @@ public class App {
         Pedido p1 = new Pedido("Joseph", "Laptop", 1500, "jdcondorl@uce.edu.ec", "0969827765");
 
         Pedido p2 = new Pedido("Pablo", "Mouse", 50, "pmlayedra@uce.edu.ec", "0969000016");
+        Pedido p3 = new Pedido("Pablo", "Mica", 3, "pmlayedra@uce.edu.ec", "0969000016");
         
         PedidoService service = new PedidoService();
         service.registrar(p1);
-        service.registrar(p2);      
+        service.registrar(p2);  
+        service.registrar(p3);    
     }
 }
